@@ -4,7 +4,7 @@ A very basic IRC bot.  The term "Hodor" almost certainly is copyright to someone
 
 ## Usage
 
-This is really just a sample, and for me to play with.  If you want to configure or run it, edit the code.  Sorry.
+This is really just a sample of using my botty library.  It's hacky, and has lots of commented out bits right now. Sorry!
 
 ## License
 
