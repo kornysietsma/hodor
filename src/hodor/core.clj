@@ -54,13 +54,19 @@
   (botty/broadcast-message! world "hodor...")
   world)
 
-(defn on-command [world {:keys [cmd from-nick reply-to] :as payload}]
-  (case (clojure.string/trim cmd)
-    "quit" (do
-             (botty/broadcast-message! world "Hodor!")
-             (botty/quit! world "Hodor!"))
-    (botty/send-message! world reply-to "hodor?"))
-  world)
+(defn on-command [world {:keys [type value from-nick reply-to] :as payload}]
+  (case type
+    :command
+    (do (case (clojure.string/trim value)
+      "quit" (do
+               (botty/broadcast-message! world "Hodor!")
+               (botty/quit! world "Hodor!"))
+      (botty/send-message! world reply-to "hodor?"))
+    world)
+    :match
+    (do
+      (botty/broadcast-message! world "Hodor")
+      world)))
 
 (def default-config
   {:botname  "hodor"
@@ -68,6 +74,7 @@
    :irchost  "localhost"
    :ircport  6667
    :tick-ms  60000
+   :matcher #"(?i).*(^|\W)hodor(\W|$).*"
    }
   )
 
