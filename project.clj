@@ -4,5 +4,5 @@
             :url "http://www.wtfpl.net/"}
   :dependencies [[org.clojure/clojure "1.6.0"]
                  [irclj "0.5.0-alpha4"]
-                 [com.sietsma.korny/botty "0.1.1"]]
+                 [com.sietsma.korny/botty "0.1.2"]]
   :main hodor.core)

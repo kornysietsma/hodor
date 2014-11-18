@@ -74,7 +74,7 @@
    :irchost  "localhost"
    :ircport  6667
    :tick-ms  60000
-   :matcher #"(?i).*(^|\W)hodor(\W|$).*"
+   :matcher "(?i).*(^|\\W)hodor(\\W|$).*"
    }
   )
 
