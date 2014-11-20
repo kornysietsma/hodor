@@ -2,7 +2,6 @@
   (:require
     [botty.core :as botty]
     [clojure.pprint :refer [pprint]]
-    [clojure.core.async :refer [chan go-loop >! <! timeout alt! put! <!!] :as async]
     [clojure.tools.reader.edn :as edn])
   (:gen-class))
 
@@ -83,8 +82,8 @@
                  0 default-config
                  1 (edn/read-string (slurp (first args)))
                  (throw (Exception. "please specify a config file, or no args for dev-only defaults")))
-        killer (botty/irc-loop config {:on-tick on-tick
+        wait-for-death-fn (botty/irc-loop config {:on-tick on-tick
                                        :on-command on-command})]
     (prn "Hodor...")
-    (<!! killer)
+    (wait-for-death-fn)
     (prn "hodor!")))
