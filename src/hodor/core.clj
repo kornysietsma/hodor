@@ -60,6 +60,8 @@
       "quit" (do
                (botty/broadcast-message! world "Hodor!")
                (botty/quit! world "Hodor!"))
+      "yell" (botty/broadcast-message! world "HODOR!!")
+      "whisper" (botty/broadcast-message! world "(hodor)")
       (botty/send-message! world reply-to "hodor?"))
     world)
     :match
